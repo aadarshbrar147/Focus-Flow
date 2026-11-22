@@ -1,0 +1,813 @@
+
+/* =================================
+   1. ROOT VARIABLES & GLOBAL RESET
+================================= */
+
+:root{
+  --primary:linear-gradient(45deg,white,blue,black);
+  --secondary:#333;
+  --background:#f5f5f5;
+  --text:#eee;
+  --border:#4F6D9A;
+  --success:#22c55e;
+  --warning:#f59e0b;
+  --danger:#ef4444;
+  --radius:12px;
+  --shadow:lightblue;
+}
+
+*,*::before,*::after{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* =================================
+   2. GLOBAL LAYOUT
+================================= */
+
+html,
+body{
+  margin:0 auto;
+  height:100dvh;
+  overflow-x:hidden;
+  overscroll-behavior:none;
+}
+
+body{
+  color:var(--text);
+  font-family:Arial,Helvetica,Sans-Serif;
+  background:var(--secondary);
+  min-height:100vh;
+}
+
+.full-body{
+  min-height:0;
+  width:100%;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  background:var(--secondary);
+  height:100dvh;
+}
+
+.main-body{
+  display:flex;
+  flex:1;
+  min-height:0;
+  min-width:0;
+}
+
+main{
+  flex:1;
+  padding:20px;
+}
+
+/* =================================
+   3. TOPBAR
+================================= */
+
+.topbar{
+  background:var(--primary);
+  height:70px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.profile{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  height:40px;
+  width:40px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.searchbar{
+  border-radius:25px;
+  border:solid 1px var(--border);
+  padding:0 25px;
+  flex:1;
+  height:40px;
+  outline:none;
+  transition:.3s ease;
+}
+
+/* =================================
+   4. SIDEBAR & NAVIGATION
+================================= */
+
+.sidebar{
+  position:relative;
+  background:var(--secondary);
+  width:220px;
+  padding:20px 10px;
+}
+
+.sidebar nav{
+  gap:10px;
+  display:flex;
+  flex-direction:column;
+}
+
+.option{
+  color:white;
+  text-decoration:none;
+  padding:10px;
+  gap:10px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  transition:.3s ease;
+}
+
+.option:hover{
+  background:var(--primary);
+  transform:translateX(8px);
+  width:100%;
+}
+
+.option.active{
+  background:var(--primary);
+  color:var(--text);
+}
+
+/* =================================
+   5. COMMON CARDS & BUTTONS
+================================= */
+
+.card{
+  color:var(--text);
+  padding:20px;
+  background-color:var(--secondary);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  transition:.2s ease;
+  min-height:0;
+  min-width:0;
+}
+
+button{
+  cursor:pointer;
+  border:none;
+  padding:10px 20px;
+  border-radius:10px;
+  transition:.3s ease;
+}
+
+/* =================================
+   6. DASHBOARD
+================================= */
+
+.dashboard{
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  padding:20px;
+  width:100%;
+  align-items:stretch;
+  gap:20px;
+  min-height:0;
+  min-width:0;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+.dashboard-overview{
+  display:flex;
+  flex:1;
+  gap:20px;
+  min-width:0;
+  min-height:0;
+}
+
+.progress-card{
+  background:var(--secondary);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  width:350px;
+  min-width:280px;
+  gap:20px;
+  align-items:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:20px;
+}
+
+/* Progress ring */
+
+.progress-ring{
+  width:100%;
+  max-width:220px;
+}
+
+.status{
+  display:flex;
+  width:100%;
+  justify-content:space-around;
+}
+
+.status-item{
+  font-size:15px;
+  gap:10px;
+  display:flex;
+  align-items:center;
+}
+
+.completed-color{
+  height:14px;
+  width:14px;
+  border-radius:50%;
+  background:var(--primary);
+}
+
+.pending-color{
+  height:14px;
+  width:14px;
+  border-radius:50%;
+  background-color:#E5E7EB;
+}
+
+/* Statistics */
+
+.stats-grid{
+  grid-template-columns:repeat(2,1fr);
+  display:grid;
+  flex:1;
+  gap:20px;
+}
+
+.stat-card{
+  min-height:160px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.stat-card h2{
+  color:var(--text);
+  margin-bottom:10px;
+  font-size:40px;
+}
+
+.stat-card p{
+  color:var(--text);
+  font-size:18px;
+}
+
+.stat-card:hover{
+  transform:translateY(-5px);
+  background:var(--primary);
+  transition:2s ease;
+  box-shadow:
+    0 8px 20px var(--shadow),
+    0 -8px 20px var(--shadow),
+    8px 0 20px var(--shadow),
+    -8px 0 20px var(--shadow);
+}
+
+/* Dashboard task preview */
+
+.dashboard-tasks{
+  width:100%;
+  flex-shrink:0;
+  background:var(--secondary);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+}
+
+.dashboard-tasks-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.dashboard-tasks-header a{
+  color:var(--text);
+  text-decoration:none;
+}
+
+.dashboard-tasks-header a:hover{
+  text-decoration:underline;
+}
+
+.dashboard-task-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  border-bottom:1px solid rgba(255,255,255,0.12);
+}
+
+.dashboard-task-marker{
+  width:12px;
+  height:12px;
+  min-width:12px;
+  border-radius:50%;
+  background:var(--warning);
+}
+
+.dashboard-task-text{
+  color:var(--text);
+  overflow-wrap:anywhere;
+}
+
+.dashboard-empty,
+.dashboard-more{
+  color:var(--text);
+  padding:10px 0;
+  opacity:.8;
+}
+
+.dashboard-more{
+  font-size:14px;
+  text-align:right;
+}
+
+/* =================================
+   7. TASK PAGE
+================================= */
+
+.task-page{
+  display:flex;
+  flex:1;
+  gap:20px;
+  padding:10px;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+}
+
+.task-input-card,
+.task-list-card{
+  background:#303030;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+
+.task-input-card{
+  padding:20px;
+  box-shadow:0 5px 15px var(--shadow);
+}
+
+.task-input-card h2{
+  margin-bottom:15px;
+}
+
+/* Task input */
+
+.task-input-group{
+  display:flex;
+  gap:10px;
+}
+
+.task-input-group input{
+  font-size:16px;
+  flex:1;
+  padding:12px;
+  outline:none;
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  background:#252525;
+  color:var(--text);
+}
+
+.task-input-group input::placeholder{
+  color:#aaa;
+}
+
+.task-input-group input:focus{
+  border-color:#7777ff;
+}
+
+/* Add task button */
+
+#addTaskBtn{
+  padding:12px 20px;
+  color:white;
+  background:var(--primary);
+}
+
+#addTaskBtn:hover{
+  opacity:.9;
+}
+
+/* Task list */
+
+.task-list-card{
+  box-shadow:0 5px 15px var(--shadow);
+  padding:20px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+
+.task-list-card h2{
+  margin-bottom:20px;
+}
+
+#taskList{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-height:0;
+}
+
+/* Individual tasks */
+
+.task{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:#292929;
+  color:var(--text);
+  border:1px solid #555;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:15px;
+  transition:.3s;
+}
+
+.task:hover{
+  transform:translateY(-4px);
+  box-shadow:
+    0 5px 12px var(--shadow),
+    0 -5px 12px var(--shadow),
+    5px 0 12px var(--shadow),
+    -5px 0 12px var(--shadow);
+}
+
+.task input[type="checkbox"]{
+  width:20px;
+  height:20px;
+  cursor:pointer;
+}
+
+.task-text{
+  flex:1;
+  font-size:17px;
+  word-break:break-word;
+  color:var(--text);
+  min-width:0;
+}
+
+.completed .task-text{
+  text-decoration:line-through;
+  color:var(--text);
+}
+
+.completed{
+  opacity:.7;
+}
+
+/* Action buttons */
+
+.task-buttons{
+  display:flex;
+  gap:8px;
+}
+
+.edit-btn{
+  background:var(--primary);
+  color:white;
+}
+
+.delete-btn{
+  background:var(--warning);
+  color:var(--text);
+}
+
+.edit-btn,
+.delete-btn{
+  min-width:65px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* Empty task message */
+
+.empty-message{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:var(--text);
+  padding:20px;
+}
+
+/* =================================
+   8. QUOTE PAGE
+================================= */
+
+.quote-page{
+  display:flex;
+  flex:1;
+  justify-content:center;
+  align-items:center;
+  min-width:0;
+  min-height:0;
+}
+
+.quote-card{
+  width:100%;
+  max-width:700px;
+  margin:auto;
+  background:var(--secondary);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:40px 30px;
+  text-align:center;
+  box-shadow:0 5px 15px var(--shadow);
+}
+
+.quote-card h2{
+  margin-bottom:30px;
+  color:var(--text);
+}
+
+#quoteText{
+  font-size:24px;
+  line-height:1.6;
+  font-style:italic;
+  margin-bottom:25px;
+  color:var(--text);
+}
+
+#quoteAuthor{
+  margin-bottom:35px;
+  color:var(--text);
+  font-weight:normal;
+}
+
+#newQuoteBtn{
+  background:var(--primary);
+  color:white;
+  padding:12px 28px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  transition:.3s;
+}
+
+#newQuoteBtn:hover{
+  transform:translateY(-2px);
+  opacity:.9;
+}
+
+/* =================================
+   9. FEEDBACK PAGE
+================================= */
+
+.feedback-page{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-width:0;
+  min-height:0;
+  padding:20px;
+}
+
+.feedback-card{
+  width:100%;
+  max-width:700px;
+  background:var(--secondary);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:30px;
+  box-shadow:0 5px 15px var(--shadow);
+}
+
+.feedback-card h2{
+  margin-bottom:10px;
+  color:var(--text);
+}
+
+.feedback-card p{
+  margin-bottom:25px;
+  color:var(--text);
+}
+
+/* Feedback form */
+
+#feedbackForm{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+#feedbackForm input,
+#feedbackForm textarea{
+  box-sizing:border-box;
+  width:100%;
+  padding:12px;
+  background:#252525;
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+  resize:vertical;
+}
+
+#feedbackForm input::placeholder,
+#feedbackForm textarea::placeholder{
+  color:#aaa;
+}
+
+#feedbackForm input:focus,
+#feedbackForm textarea:focus{
+  border-color:#7777ff;
+}
+
+#feedbackForm button{
+  align-self:flex-start;
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:10px;
+  padding:12px 25px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+#feedbackForm button:hover{
+  transform:translateY(-2px);
+  opacity:.9;
+}
+
+/* =================================
+   10. RESPONSIVE DESIGN
+================================= */
+
+/* Tablet and smaller screens */
+
+@media(max-width:990px){
+
+  .dashboard-overview{
+    flex-direction:column;
+    align-items:center;
+    flex:none;
+  }
+
+  .progress-card{
+    max-width:400px;
+    width:100%;
+  }
+
+  .stats-grid{
+    width:100%;
+  }
+
+}
+
+/* Smaller tablet */
+
+@media(max-width:770px){
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  #todayDate{
+    font-size:24px;
+  }
+
+}
+
+/* Mobile and tablet */
+
+@media(max-width:768px){
+
+  /* Sidebar */
+
+  .sidebar{
+    width:80px;
+  }
+
+  .searchbar{
+    width:100%;
+  }
+
+  .option{
+    justify-content:center;
+    font-size:14px;
+  }
+
+  /* Task page */
+
+  .task-input-group{
+    flex-direction:column;
+  }
+
+  .task{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr);
+    align-items:center;
+    gap:12px;
+  }
+
+  .task-buttons{
+    width:100%;
+    grid-column:2;
+    justify-content:flex-end;
+  }
+
+  /* Quote page */
+
+  .quote-page{
+    padding:15px;
+  }
+
+  .quote-card{
+    padding:25px 20px;
+  }
+
+  #quoteText{
+    font-size:20px;
+    overflow-wrap:anywhere;
+  }
+
+  /* Feedback page */
+
+  .feedback-page{
+    padding:15px;
+  }
+
+  .feedback-card{
+    padding:20px;
+  }
+
+}
+
+/* Small mobile screens */
+
+@media(max-width:480px){
+
+  .topbar{
+    gap:10px;
+    padding:10px;
+  }
+
+  .logo{
+    height:35px;
+    width:35px;
+  }
+
+  .sidebar{
+    width:70px;
+    height:70%;
+    overflow:hidden;
+    overflow-y:auto;
+  }
+
+}
+
+/* Desktop improvements */
+
+@media(min-width:769px){
+
+  /* Feedback page */
+
+  .feedback-card{
+    max-width:850px;
+    padding:40px;
+  }
+
+  #feedbackForm{
+    gap:20px;
+  }
+
+  #feedbackForm textarea{
+    min-height:150px;
+  }
+
+  /* Quote page */
+
+  .quote-card{
+    max-width:850px;
+    padding:45px;
+  }
+
+  #quoteText{
+    font-size:26px;
+    line-height:1.6;
+  }
+
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- initial scale 1.0 tell browser to set zoom to normal -->
+    <title>FocusFlow For Tasks - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <div class="full-body">
+    <!-- Topbar contain profile photo, searchbar and name -->
+    <header class="topbar">
+      <div class="profile">
+        <img src="Assets/logo.jpg" alt="FocusFlow logo" class="logo"/>
+        <h2 id="username">Welcome</h2>
+      </div>
+      <input placeholder="Search Tasks....." type="search" class="searchbar"/>
+    </header>
+  <div class="main-body">
+    <!-- main body contain sidebar and dashboard -->
+  <aside class="sidebar">
+    <nav>
+      <a href="index.html" class="option active">Dashboard</a>
+      <a href="Tasks.html" class="option">Tasks</a>
+      <a href="Quote.html" class="option">Quotes</a>
+      <a href="Feedback.html" class="option">Feedback</a>
+    </nav>
+  </aside>
+  <!-- now dashboard -->
+  <main class="dashboard" style="box-shadow:0 0 0 red;border:none;">
+    <div class="dashboard-overview">
+    <!-- This shows the progress -->
+    <div class="progress-card">
+      <svg class="progress-ring" width="220" height="220">
+        <defs>
+          <linearGradient id="progressColor-1" x1="100%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="white"/>
+            <stop offset="50%" stop-color="blue"/>
+            <stop offset="100%" stop-color="black"/>
+          </linearGradient>
+        </defs>
+        <!-- This is background circle -->
+        <circle cy="110" cx="110" r="70" fill="none" stroke="#E5E7EB" stroke-width="18" stroke-linecap="round" stroke-dasharray="440" stroke-dashoffset="0"></circle>
+        <!-- This one shows percentage -->
+        <text id="progressText" x="110" y="110" font-weight="bold" text-anchor="middle" dominant-baseline="middle" font-size="28" >0%</text>
+        <!-- This is progress cricle -->
+        <circle cy="110" cx="110" r="70" stroke="url(#progressColor-1)" fill="none" stroke-width="18" stroke-dasharray="440" stroke-dashoffset="220" stroke-linecap="round" id="progressCircle"></circle>
+        <!-- stroke linecap design circle start and end point round,square,butt(defualt) -->
+        
+      </svg>
+    <div class="status">
+      <div class="status-item" style="box-shadow:0 0 0 red;border:none;">
+        <h2 class="completed-color"></h2>
+        Completed
+      </div>
+      <div class="status-item" style="box-shadow:0 0 0 red;border:none;">
+        <h2 class="pending-color"></h2>
+        Pending
+      </div>
+    </div>
+    </div>
+    <!-- Total no. of completed tasks -->
+    <div class="stats-grid">
+      <div class="card stat-card">
+        <h2 id="completedCount">3</h2>
+        <p>
+          Completed Tasks
+        </p>
+      </div>
+      <!-- Total no. of pending tasks -->
+      <div class="card stat-card">
+        <h2 id="pendingCount">
+          6
+        </h2>
+        <p>
+          Pending Tasks
+        </p>
+      </div>
+      <!-- Total no. of tasks -->
+      <div class="card stat-card">
+        <h2 id="totalCount">
+          9
+        </h2>
+        <p>
+          Total Tasks
+        </p>
+      </div>
+      <!-- This one change date automatically -->
+      <div class="card stat-card">
+        <h2 id="todayDate">
+          20 july 2026
+        </h2>
+        <p>
+          Today's Date
+        </p>
+      </div>
+    </div>
+    </div>
+    <!-- Dashboard Task Preview -->
+
+<div class="dashboard-tasks">
+
+    <div class="dashboard-tasks-header">
+
+        <h2>My Tasks</h2>
+
+        <a href="tasks.html">View All</a>
+
+    </div>
+
+    <div id="dashboardTasks">
+
+    </div>
+
+</div>
+  
+  </main>
+  </div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>

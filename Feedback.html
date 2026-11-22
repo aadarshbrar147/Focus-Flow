@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>FocusFlow For Tasks - Feedback </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="full-body">
+    <!-- Topbar contain profile photo, searchbar and name -->
+    <header class="topbar">
+      <div class="profile">
+        <img src="Assets/logo.jpg" alt="FocusFlow logo" class="logo"/>
+        <h2 id="username">Welcome</h2>
+      </div>
+      <input placeholder="Search Tasks....." type="search" class="searchbar"/>
+    </header>
+  <div class="main-body">
+    <!-- main body contain sidebar and dashboard -->
+  <aside class="sidebar">
+    <nav>
+      <a href="index.html" class="option">Dashboard</a>
+      <a href="Tasks.html" class="option">Tasks</a>
+      <a href="Quote.html" class="option">Quotes</a>
+      <a href="Feedback.html" class="option active">Feedback</a>
+    </nav>
+  </aside>
+<main class="feedback-page">
+<div class="feedback-card">
+<h2>
+Contact & Feedback
+</h2>
+<p>
+We'd love to hear your suggestions.
+</p>
+<form id="feedbackForm">
+<input
+type="text"
+id="feedbackName"
+placeholder="Your Name"
+required>
+<input
+type="email"
+id="feedbackEmail"
+placeholder="Your Email"
+required>
+<textarea
+id="feedbackMessage"
+rows="6"
+placeholder="Write your feedback..."
+required></textarea>
+<button
+type="submit">
+Send Feedback
+</button>
+</form>
+</div>
+</main>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
